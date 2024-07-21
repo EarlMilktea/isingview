@@ -1,0 +1,1 @@
+:root{height:100%;font-size:30px}body,#root{height:100%}input[type=range]{accent-color:#439cfe}@keyframes rotation{0%{transform:rotate(0)}to{transform:rotate(360deg)}}#react-logo{animation:rotation 4s infinite linear}
