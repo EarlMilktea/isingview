@@ -45,7 +45,7 @@ function KRange({ k, hook }: KRangeProps) {
   return (
     <div className={tw`flex`}>
       <label htmlFor="k" className={tw`w-2/12 block`}>
-        K
+        βJ
       </label>
       <input
         type="range"
@@ -88,23 +88,27 @@ export default function App() {
   const [k, setK] = useState(K_INIT);
   const [fps, setFps] = useState(FPS_INIT);
   return (
-    <div className={tw`w-10/12 mx-auto relative top-1/2 -translate-y-2/4`}>
-      <div className={tw`flex justify-between`}>
-        <div className={tw`w-5/12`}>
+    <div className={tw`w-10/12 mx-auto my-12`}>
+      <h1 className={tw`text-2xl font-bold break-keep my-4 lg:hidden`}>
+        MCMC: 2D Ising Model
+      </h1>
+
+      <div className={tw`md:flex justify-between`}>
+        <div className={tw`md:w-5/12`}>
           <IsingView svgSize={"100%"} size={size} k={k} fps={fps} />
         </div>
 
-        <div className={tw`w-1/2 flex flex-col justify-between`}>
-          <h1 className={tw`text-2xl font-bold`}>
-            2D Ising Model: WebAssembly
+        <div className={tw`md:w-1/2 flex flex-col justify-between`}>
+          <h1 className={tw`text-2xl font-bold hidden lg:block break-keep`}>
+            MCMC: 2D Ising Model
           </h1>
 
-          <div>
+          <div className={tw`hidden md:block`}>
             <div className={tw`flex justify-evenly`}>
               <img src={wasmLogo} id="wasm-logo" className={tw`w-3/12`}></img>
               <img src={reactLogo} id="react-logo" className={tw`w-3/12`}></img>
             </div>
-            <h2 className={tw`text-center text-xl mt-2`}>
+            <h2 className={tw`text-center text-xl mt-2 hidden lg:block`}>
               WebAssembly + React
             </h2>
           </div>

@@ -9,13 +9,7 @@ svg * {
 */
 
 :root {
-  height: 100%;
   font-size: 30px;
-}
-
-body,
-#root {
-  height: 100%;
 }
 
 input[type="range"] {
