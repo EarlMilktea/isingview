@@ -89,7 +89,7 @@ export default function App() {
   const [fps, setFps] = useState(FPS_INIT);
   return (
     <div className={tw`w-10/12 mx-auto my-12`}>
-      <h1 className={tw`text-2xl font-bold break-keep my-4 lg:hidden`}>
+      <h1 className={tw`text-2xl font-bold my-4 lg:hidden`}>
         MCMC: 2D Ising Model
       </h1>
 
@@ -99,7 +99,7 @@ export default function App() {
         </div>
 
         <div className={tw`md:w-1/2 flex flex-col justify-between`}>
-          <h1 className={tw`text-2xl font-bold hidden lg:block break-keep`}>
+          <h1 className={tw`text-2xl font-bold hidden lg:block`}>
             MCMC: 2D Ising Model
           </h1>
 
