@@ -84,9 +84,11 @@ function FPSRange({ fps, hook }: FPSRangeProps) {
 }
 
 export default function App() {
-  const [size, setSize] = useState(SIZE_INIT);
-  const [k, setK] = useState(K_INIT);
-  const [fps, setFps] = useState(FPS_INIT);
+  const [state, setState] = useState({
+    size: SIZE_INIT,
+    k: K_INIT,
+    fps: FPS_INIT,
+  });
   return (
     <div className={tw`w-10/12 mx-auto my-12`}>
       <h1 className={tw`text-2xl font-bold my-4 lg:hidden`}>
@@ -95,7 +97,12 @@ export default function App() {
 
       <div className={tw`md:flex justify-between`}>
         <div className={tw`md:w-5/12`}>
-          <IsingView svgSize={"100%"} size={size} k={k} fps={fps} />
+          <IsingView
+            svgSize={"100%"}
+            size={state.size}
+            k={state.k}
+            fps={state.fps}
+          />
         </div>
 
         <div className={tw`md:w-1/2 flex flex-col justify-between`}>
@@ -115,26 +122,32 @@ export default function App() {
 
           <div>
             <SizeRange
-              size={size}
+              size={state.size}
               hook={(e) => {
-                const v = Number.parseInt(e.target.value);
-                setSize(v);
+                setState({
+                  ...state,
+                  size: Number.parseInt(e.target.value),
+                });
               }}
             />
 
             <KRange
-              k={k}
+              k={state.k}
               hook={(e) => {
-                const v = Number.parseFloat(e.target.value);
-                setK(v);
+                setState({
+                  ...state,
+                  k: Number.parseFloat(e.target.value),
+                });
               }}
             />
 
             <FPSRange
-              fps={fps}
+              fps={state.fps}
               hook={(e) => {
-                const v = Number.parseInt(e.target.value);
-                setFps(v);
+                setState({
+                  ...state,
+                  fps: Number.parseInt(e.target.value),
+                });
               }}
             />
           </div>
