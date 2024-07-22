@@ -1,5 +1,7 @@
 import { type ChangeEventHandler, useState } from "react";
 import { tw } from "twind";
+import reactLogo from "./assets/react.svg";
+import wasmLogo from "./assets/wasm.svg";
 import IsingView from "./IsingView.tsx";
 import { K_INIT, SIZE_INIT } from "./utils.ts";
 
@@ -72,11 +74,8 @@ export default function App() {
 
           <div>
             <div className={tw`flex justify-evenly`}>
-              <img src="/wasm.svg" id="wasm-logo" className={tw`w-3/12`}></img>
-              <img
-                src="/react.svg"
-                id="react-logo"
-                className={tw`w-3/12`}></img>
+              <img src={wasmLogo} id="wasm-logo" className={tw`w-3/12`}></img>
+              <img src={reactLogo} id="react-logo" className={tw`w-3/12`}></img>
             </div>
             <h2 className={tw`text-center text-xl mt-2`}>
               WebAssembly + React
