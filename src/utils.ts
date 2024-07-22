@@ -14,3 +14,4 @@ export function randSpin(n: number): (1 | -1)[][] {
 
 export const SIZE_INIT = 12;
 export const K_INIT = 0.44;
+export const FPS_INIT = 60;

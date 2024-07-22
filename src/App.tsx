@@ -3,7 +3,7 @@ import { tw } from "twind";
 import reactLogo from "./assets/react.svg";
 import wasmLogo from "./assets/wasm.svg";
 import IsingView from "./IsingView.tsx";
-import { K_INIT, SIZE_INIT } from "./utils.ts";
+import { FPS_INIT, K_INIT, SIZE_INIT } from "./utils.ts";
 
 interface SizeRangeProps {
   size: number;
@@ -15,10 +15,15 @@ interface KRangeProps {
   hook: ChangeEventHandler<HTMLInputElement>;
 }
 
+interface FPSRangeProps {
+  fps: number;
+  hook: ChangeEventHandler<HTMLInputElement>;
+}
+
 function SizeRange({ size, hook }: SizeRangeProps) {
   return (
     <div className={tw`flex`}>
-      <label htmlFor="L" className={tw`w-1/12 block`}>
+      <label htmlFor="L" className={tw`w-2/12 block`}>
         L
       </label>
       <input
@@ -27,7 +32,7 @@ function SizeRange({ size, hook }: SizeRangeProps) {
         max="128"
         step="1"
         value={size}
-        className={tw`w-9/12 bg-[#439CFE]`}
+        className={tw`w-8/12 bg-[#439CFE]`}
         id="L"
         onChange={hook}
       />
@@ -39,7 +44,7 @@ function SizeRange({ size, hook }: SizeRangeProps) {
 function KRange({ k, hook }: KRangeProps) {
   return (
     <div className={tw`flex`}>
-      <label htmlFor="k" className={tw`w-1/12 block`}>
+      <label htmlFor="k" className={tw`w-2/12 block`}>
         K
       </label>
       <input
@@ -48,7 +53,7 @@ function KRange({ k, hook }: KRangeProps) {
         max="1"
         step="any"
         value={k}
-        className={tw`w-9/12`}
+        className={tw`w-8/12`}
         id="k"
         onChange={hook}
       />
@@ -57,14 +62,36 @@ function KRange({ k, hook }: KRangeProps) {
   );
 }
 
+function FPSRange({ fps, hook }: FPSRangeProps) {
+  return (
+    <div className={tw`flex`}>
+      <label htmlFor="fps" className={tw`w-2/12 block`}>
+        FPS
+      </label>
+      <input
+        type="range"
+        min="1"
+        max="300"
+        step="1"
+        value={fps}
+        className={tw`w-8/12`}
+        id="fps"
+        onChange={hook}
+      />
+      <div className={tw`w-2/12 text-right`}>{fps}</div>
+    </div>
+  );
+}
+
 export default function App() {
   const [size, setSize] = useState(SIZE_INIT);
   const [k, setK] = useState(K_INIT);
+  const [fps, setFps] = useState(FPS_INIT);
   return (
     <div className={tw`w-10/12 mx-auto relative top-1/2 -translate-y-2/4`}>
       <div className={tw`flex justify-between`}>
         <div className={tw`w-5/12`}>
-          <IsingView svgSize={"100%"} size={size} k={k} />
+          <IsingView svgSize={"100%"} size={size} k={k} fps={fps} />
         </div>
 
         <div className={tw`w-1/2 flex flex-col justify-between`}>
@@ -96,6 +123,14 @@ export default function App() {
               hook={(e) => {
                 const v = Number.parseFloat(e.target.value);
                 setK(v);
+              }}
+            />
+
+            <FPSRange
+              fps={fps}
+              hook={(e) => {
+                const v = Number.parseInt(e.target.value);
+                setFps(v);
               }}
             />
           </div>
